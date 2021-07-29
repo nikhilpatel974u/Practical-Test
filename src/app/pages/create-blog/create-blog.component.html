@@ -1,0 +1,79 @@
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your title</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="firstCtrl" required>
+          <mat-error *ngIf="firstFormGroup.controls['firstCtrl'].hasError('required')">
+            Title is required!
+        </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your description</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="secondCtrl" required>
+          <mat-error *ngIf="secondFormGroup.controls['secondCtrl'].hasError('required')">
+            Description is required!
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Fill out your Date</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Date</mat-label>
+            <input matInput formControlName="thirdCtrl"
+                   required>
+            <mat-error *ngIf="thirdFormGroup.controls['thirdCtrl'].hasError('required')">
+                Date is required!
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Fill out your Status</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <input matInput formControlName="fourthCtrl" required>
+            <mat-error *ngIf="fourthFormGroup.controls['fourthCtrl'].hasError('required')">
+                Status is required!
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  
